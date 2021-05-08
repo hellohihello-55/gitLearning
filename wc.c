@@ -31,12 +31,15 @@ int countw(char *file)//返回文件词的数目
     char ch;
         while(!feof(f)) {
         ch=fgetc(f);
-        if((ch >= 'a'&&ch <= 'z')||(ch>='A'&&ch<='Z')||ch=='_'){ flag=1;}
+        if(ch==' '||ch==','){ flag=1; continue;}
         else if (flag) {
             wordnum++; flag=0;
             }
     }
     fclose(f);
-    printf("单词数:%d ",wordnum);
+    if(flag==1)printf("单词数:%d ",wordnum);
+    else
+
+    printf("单词数:%d ",wordnum+1);
     return 0;
 }
